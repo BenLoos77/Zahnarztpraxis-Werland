@@ -921,13 +921,8 @@ section.narrow { max-width: 1200px; }
   .logo-text { font-size: 14px; padding-left: 10px; }
   .logo-text span { font-size: 8px; margin-top: 4px; }
   .nav-links { display: none; }
-  .nav-burger { display: block; }
-  .nav-cta {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    padding: 8px 0;
-    margin-left: auto;
-  }
+  .nav-burger { display: block; margin-left: auto; }
+  .nav-cta { display: none; }
   .hero, .page-header { padding: 140px 24px 80px; }
   .hero-meta { grid-template-columns: 1fr; gap: 40px; margin-left: 0; }
   section, .services, .related { padding: 80px 24px; }
