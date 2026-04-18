@@ -1,0 +1,139 @@
+# Zahnarztpraxis Werland — Upload-Anleitung
+
+## Was Sie hochladen
+
+Den **gesamten Inhalt** des Ordners `werland-site/` auf Ihren Webserver.
+
+Wichtig: Es wird der **Inhalt** des Ordners hochgeladen, nicht der Ordner
+selbst. Nach dem Hochladen muss die Datei `index.html` direkt im Hauptverzeichnis
+Ihrer Website liegen (also unter `www.zahnarztpraxis-werland.de/index.html`).
+
+## Welche Dateien gehören dazu
+
+Alle Dateien und der Unterordner `leistungen/` sowie der Unterordner `assets/`
+gehören auf den Server. Also:
+
+    index.html
+    zahnarzt.html
+    leistungen.html
+    sprechzeiten.html
+    anfahrt.html
+    kontakt.html
+    impressum.html
+    datenschutz.html
+    robots.txt
+    sitemap.xml
+    .htaccess                   ← wichtig! (versteckte Datei)
+    assets/
+        logo.png
+        styles.css
+        favicon.ico
+        apple-touch-icon.png
+        icon-192.png
+        icon-512.png
+        og-image.jpg
+    leistungen/
+        implantologie.html
+        zahnkosmetik.html
+        prophylaxe.html
+        parodontologie.html
+        wurzelbehandlung.html
+        lachgassedierung.html
+        komposite.html
+        zaehne-und-gesundheit.html
+
+## Wo die Dateien hinkommen
+
+Fast alle deutschen Hoster nennen das Zielverzeichnis so oder ähnlich:
+
+- bei 1&1 IONOS:   `/`
+- bei Strato:      `/`
+- bei Hosteurope:  `/www/htdocs/`
+- bei All-Inkl:    `/www/`
+- bei DomainFactory: `/`
+- bei Alfahosting:   `/html/`
+- bei Plesk/cPanel:  `httpdocs/` oder `public_html/`
+
+Fragen Sie im Zweifel kurz beim Support Ihres Hosters nach. Das Zielverzeichnis
+heißt fast immer so etwas wie „Document Root", „Webroot" oder „Öffentliches
+Verzeichnis".
+
+## So laden Sie hoch — drei Wege
+
+### Weg 1 — Über den Webbrowser (einfachster Weg)
+
+Die meisten Hoster haben einen **Datei-Manager** in ihrer Kundenoberfläche:
+
+1. Einloggen bei Ihrem Hoster
+2. „Webspace" → „Datei-Manager" oder „File Manager" öffnen
+3. Ins Zielverzeichnis wechseln (siehe oben)
+4. **Alte Dateien sichern oder umbenennen** (z. B. alte `index.html` in
+   `index.html.alt` umbenennen, damit Sie im Notfall zurückkönnen)
+5. Die Datei `werland-website.zip` hochladen
+6. Dort direkt entpacken („Extract" / „Entpacken")
+7. Die ZIP-Datei danach löschen
+
+### Weg 2 — Mit einem FTP-Programm (z. B. FileZilla)
+
+Kostenlos herunterladen: https://filezilla-project.org
+
+1. FileZilla öffnen
+2. Zugangsdaten eingeben (bekommen Sie von Ihrem Hoster):
+   - Server:   z. B. `ftp.zahnarztpraxis-werland.de`
+   - Benutzer: Ihr FTP-Benutzername
+   - Passwort: Ihr FTP-Passwort
+   - Port:     21 (oder 22 bei SFTP)
+3. Links sehen Sie Ihre lokalen Dateien, rechts den Server
+4. Auf dem Server ins Zielverzeichnis wechseln
+5. **Alle Dateien aus `werland-site/`** markieren und per Drag & Drop
+   rüberziehen
+
+**Wichtig:** In den Einstellungen von FileZilla (Bearbeiten → Einstellungen
+→ Dateilisten) die Option „Versteckte Dateien anzeigen" aktivieren, damit
+die `.htaccess`-Datei mit hochgeladen wird.
+
+### Weg 3 — Falls Sie einen Webdesigner oder Administrator haben
+
+Geben Sie ihm einfach die Datei `werland-website.zip`. Er weiß, was zu tun ist.
+
+## Nach dem Upload — Prüfen
+
+1. **Website öffnen:** https://www.zahnarztpraxis-werland.de
+2. **Favicon prüfen:** Im Browser-Tab sollte das kleine MW-Logo erscheinen
+   (manchmal braucht es einen Reload mit Strg+F5)
+3. **Alle Links testen:** Klicken Sie sich einmal durch alle Seiten
+4. **Auf dem Handy ansehen:** Öffnen Sie die Seite auch am Smartphone
+5. **Google Search Console:** Die neue `sitemap.xml` bei Google anmelden
+   (https://search.google.com/search-console) — das hilft beim schnelleren
+   Ranking.
+
+## Wichtige Hinweise vor dem Go-Live
+
+- **Impressum & Datenschutz:** Die beiden Seiten sind eine Vorlage. Bitte
+  vor dem Go-Live juristisch prüfen lassen. Anwalt, Datenschutzbeauftragter
+  oder die Kammer können helfen.
+- **E-Mail-Adresse:** Aktuell steht `praxis@zahnarztpraxis-werland.de`.
+  Bitte durch die echte E-Mail ersetzen, falls abweichend. Die Adresse
+  taucht im Footer und auf der Kontaktseite auf.
+- **Logo:** Das Logo ist als PNG hinterlegt. Falls Sie eine SVG-Version
+  haben, bitte diese anstelle von `assets/logo.png` verwenden — SVG bleibt
+  in jeder Größe scharf.
+- **Echte Fotos:** Der Praxis-Bereich zeigt aktuell das Logo als Platzhalter.
+  Sobald professionelle Fotos von Herrn Werland oder der Praxis vorliegen,
+  können diese einfach das Logo ersetzen.
+
+## Falls etwas nicht funktioniert
+
+- **Seite zeigt 404/Fehler:** Die Dateien liegen nicht im richtigen
+  Verzeichnis. Kontrollieren Sie, dass `index.html` direkt im Webroot liegt.
+- **Bilder fehlen / Seite ohne Layout:** Der Ordner `assets/` wurde nicht
+  mit hochgeladen oder liegt am falschen Platz.
+- **HTTPS funktioniert nicht:** Die `.htaccess`-Datei wurde nicht
+  hochgeladen (versteckte Datei!). Nachträglich hochladen.
+- **Alte Google-Links sind tot:** Die Weiterleitungen in der `.htaccess`
+  kümmern sich darum — sofern `.htaccess` korrekt hochgeladen ist.
+
+---
+
+Bei Fragen zum Upload einfach eine kurze Nachricht — dann gehen wir das
+zusammen durch.
