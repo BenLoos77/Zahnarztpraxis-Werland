@@ -44,7 +44,63 @@
     <li><a href="kontakt.html">Kontakt</a></li>
   </ul>
   <a href="tel:027742666" class="nav-cta">Termin vereinbaren</a>
+  <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+    <span class="nav-burger-lines"></span>
+  </button>
 </nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="zahnarzt.html">Praxis</a></li>
+    <li><a href="leistungen.html" class="active">Leistungen</a></li>
+    <li><a href="sprechzeiten.html">Sprechzeiten</a></li>
+    <li><a href="anfahrt.html">Anfahrt</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+  <div class="mobile-menu-footer">
+    <div class="label">Termin vereinbaren</div>
+    <a href="tel:027742666">02774 · 2666</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var btn = document.getElementById('navBurger');
+  var body = document.body;
+  var menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+
+  function toggle() {
+    var open = body.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open);
+    menu.setAttribute('aria-hidden', !open);
+  }
+  function close() {
+    body.classList.remove('menu-open');
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+  }
+
+  btn.addEventListener('click', toggle);
+
+  // Close when a menu link is tapped
+  menu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', close);
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') close();
+  });
+
+  // Close when viewport grows (user rotates to landscape etc.)
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 900) close();
+  });
+})();
+</script>
+
 <header class="page-header">
   <div class="breadcrumb">
     <a href="index.html">Startseite</a>
