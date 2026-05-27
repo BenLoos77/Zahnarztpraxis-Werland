@@ -6,6 +6,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://www.zahnarztpraxis-werland.de/home.html</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.zahnarztpraxis-werland.de/zahnarzt.html</loc>
     <priority>0.9</priority>
     <changefreq>yearly</changefreq>

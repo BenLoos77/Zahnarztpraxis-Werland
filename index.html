@@ -3,264 +3,717 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zahnarztpraxis Werland — Ewersbach · Moderne Zahnmedizin in Dietzhölztal</title>
-<meta name="description" content="Zahnarztpraxis Markus Werland in Ewersbach: moderne Zahnheilkunde mit Schwerpunkt Ästhetik, Implantologie und Prophylaxe. Seit 1998. Termin: 02774 · 2666">
+<title>Zahnarztpraxis Werland — Ewersbach</title>
+<meta name="description" content="Zahnarztpraxis Markus Werland in Ewersbach: moderne Zahnheilkunde mit Schwerpunkt Ästhetik und Implantologie. Seit 2002.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.zahnarztpraxis-werland.de/">
 
-<!-- Open Graph / Social Media -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="Zahnarztpraxis Werland">
-<meta property="og:title" content="Zahnarztpraxis Werland — Ewersbach · Moderne Zahnmedizin in Dietzhölztal">
-<meta property="og:description" content="Zahnarztpraxis Markus Werland in Ewersbach: moderne Zahnheilkunde mit Schwerpunkt Ästhetik, Implantologie und Prophylaxe. Seit 1998. Termin: 02774 · 2666">
+<meta property="og:title" content="Zahnarztpraxis Werland — Ewersbach">
+<meta property="og:description" content="Zahnarztpraxis Markus Werland in Ewersbach: moderne Zahnheilkunde mit Schwerpunkt Ästhetik und Implantologie.">
 <meta property="og:url" content="https://www.zahnarztpraxis-werland.de/">
 <meta property="og:image" content="https://www.zahnarztpraxis-werland.de/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Favicons -->
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#ffffff">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #0a0a0a;
+    --ink-soft: #404040;
+    --ink-muted: #9a9a9a;
+    --accent: #8a7247;
+    --line: #0a0a0a;
+    --line-soft: rgba(10, 10, 10, 0.1);
+    --line-hair: rgba(10, 10, 10, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  ::selection { background: var(--ink); color: var(--bg); }
+
+  /* ========== TICKER OBEN ========== */
+  .ticker {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    z-index: 10;
+    font-weight: 500;
+  }
+  .ticker .status { display: flex; align-items: center; gap: 12px; }
+  .ticker .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .ticker .right {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--ink-muted);
+  }
+
+  /* ========== STAGE ========== */
+  .stage {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 56px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 48px 80px;
+    background: var(--bg);
+    animation: fadeIn 1.6s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ========== LINKE SPALTE: ANIMIERTES LOGO ========== */
+  .col-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .logo-wrap {
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+  }
+  .logo-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Buchstaben: Fade-In mit leichtem Aufstieg */
+  .logo-svg .anim-letter-m,
+  .logo-svg .anim-letter-w {
+    opacity: 0;
+    transform-origin: center;
+    animation: letterIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .logo-svg .anim-letter-m { animation-delay: 0.4s; }
+  .logo-svg .anim-letter-w { animation-delay: 0.7s; }
+  @keyframes letterIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Bögen: nach den Buchstaben einblenden (sanft sichtbar werden) */
+  .logo-svg .anim-arc-dark,
+  .logo-svg .anim-arc-gold {
+    opacity: 0;
+    animation: arcDraw 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  .logo-svg .anim-arc-dark { animation-delay: 1.6s; }
+  .logo-svg .anim-arc-gold { animation-delay: 1.9s; }
+  @keyframes arcDraw {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .logo-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 3.6s both;
+    text-align: center;
+  }
+
+  /* ========== RECHTE SPALTE: TEXT + ENTRY ========== */
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 56px;
+    max-width: 520px;
+    padding-top: 20px;
+  }
+
+  .intro-label {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 500;
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 1.8s both;
+  }
+  .intro-label::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+
+  .intro-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5.5vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 2s both;
+  }
+  .intro-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 460px;
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 2.3s both;
+  }
+  .intro-text p + p { margin-top: 14px; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Kontakt-Block */
+  .contact-block {
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 2.6s both;
+  }
+  .contact-label {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 500;
+  }
+  .contact-label::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding-top: 8px;
+  }
+  .contact-item .small {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .contact-item .big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .contact-item a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item a:hover { color: var(--accent); }
+
+  /* Eintreten-Button */
+  .enter {
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 2.9s both;
+  }
+  .enter-btn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+    transition: gap 0.25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .enter-btn:hover { gap: 22px; }
+  .enter-btn .arrow {
+    width: 44px; height: 44px;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    transition: transform 0.25s, background 0.25s;
+  }
+  .enter-btn:hover .arrow {
+    transform: translateX(4px);
+    background: var(--accent);
+  }
+
+  /* ========== FOOTER ========== */
+  .bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    padding-top: 24px;
+    border-top: 1px solid var(--line-soft);
+    opacity: 0;
+    animation: rise 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 3.2s both;
+  }
+  .bottom a {
+    color: inherit;
+    text-decoration: none;
+    margin-left: 24px;
+  }
+  .bottom a:hover { color: var(--accent); }
+
+  /* ========== TÜR-ANIMATION ========== */
+  .door {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 50vw;
+    background: var(--bg);
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    padding: 64px;
+    transition: opacity 0.5s ease, transform 1.8s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .door.left {
+    left: 0;
+    transform-origin: left center;
+    justify-content: flex-end;
+    padding-right: 48px;
+  }
+  .door.right {
+    left: 50vw;
+    transform-origin: right center;
+    justify-content: flex-start;
+    padding-left: 48px;
+  }
+  .door::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.04) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.04) 100%);
+    pointer-events: none;
+  }
+  .door.left::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.12) 100%);
+  }
+  .door.right::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 2px;
+    background: linear-gradient(270deg, transparent 0%, rgba(0,0,0,0.12) 100%);
+  }
+  .door-label {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(56px, 8vw, 110px);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .door-label em { font-style: italic; color: var(--accent); }
+  .door-sub {
+    position: absolute;
+    bottom: 48px;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .door.left .door-sub { right: 48px; }
+  .door.right .door-sub { left: 48px; }
+
+  body.doors-closing .door { opacity: 1; }
+  body.doors-opening .door { opacity: 1; }
+  body.doors-opening .door.left {
+    transform: perspective(2800px) rotateY(-115deg);
+    box-shadow: 40px 0 120px rgba(0,0,0,0.4);
+  }
+  body.doors-opening .door.right {
+    transform: perspective(2800px) rotateY(115deg);
+    box-shadow: -40px 0 120px rgba(0,0,0,0.4);
+  }
+
+  /* Hinter den Türen */
+  .beyond {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 28px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease 0.6s;
+    text-align: center;
+    padding: 32px;
+  }
+  body.doors-opening .beyond { opacity: 1; }
+  .beyond .overline {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #8a8880;
+    font-weight: 500;
+  }
+  .beyond h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: #fafafa;
+    max-width: 720px;
+  }
+  .beyond h2 em {
+    font-style: italic;
+    color: #c9a878;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    body { overflow-y: auto; }
+    .stage {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 56px;
+      padding: 90px 24px 32px;
+    }
+    .col-left { order: 1; }
+    .col-right { order: 2; max-width: 100%; gap: 40px; }
+    .logo-svg { max-width: 280px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    .ticker { padding: 16px 24px; font-size: 9px; }
+    .ticker .right { font-size: 12px; }
+    .bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .bottom .right-side a { margin-left: 0; margin-right: 16px; }
+    .door { padding: 32px; }
+    .door.left { padding-right: 16px; }
+    .door.right { padding-left: 16px; }
+    .door-sub { font-size: 9px; bottom: 24px; }
+    .door.left .door-sub { right: 16px; }
+    .door.right .door-sub { left: 16px; }
+  }
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo" aria-label="Zahnarztpraxis Markus Werland — Startseite">
-    <img src="assets/logo.png" alt="Zahnarztpraxis Werland Logo">
-    <span class="logo-text">Werland<span>Zahnarztpraxis</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="zahnarzt.html">Praxis</a></li>
-    <li><a href="leistungen.html">Leistungen</a></li>
-    <li><a href="sprechzeiten.html">Sprechzeiten</a></li>
-    <li><a href="anfahrt.html">Anfahrt</a></li>
-    <li><a href="kontakt.html">Kontakt</a></li>
-  </ul>
-  <a href="tel:027742666" class="nav-cta">Termin vereinbaren</a>
-  <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
-    <span class="nav-burger-lines"></span>
-  </button>
-</nav>
-
-<!-- Mobile Menu Overlay -->
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <ul>
-    <li><a href="zahnarzt.html">Praxis</a></li>
-    <li><a href="leistungen.html">Leistungen</a></li>
-    <li><a href="sprechzeiten.html">Sprechzeiten</a></li>
-    <li><a href="anfahrt.html">Anfahrt</a></li>
-    <li><a href="kontakt.html">Kontakt</a></li>
-  </ul>
-  <div class="mobile-menu-footer">
-    <div class="label">Termin vereinbaren</div>
-    <a href="tel:027742666">02774 · 2666</a>
+<!-- Ticker oben -->
+<div class="ticker">
+  <div class="status">
+    <span class="dot"></span>
+    <span>Willkommen</span>
   </div>
+  <div class="right">Praxis Werland · Dietzhölztal</div>
+</div>
+
+<!-- Hauptbühne -->
+<div class="stage">
+
+  <!-- LINKE SPALTE: Animiertes Logo -->
+  <div class="col-left">
+    <div class="logo-wrap">
+      <svg class="logo-svg" viewBox="0 0 540 446" xmlns="http://www.w3.org/2000/svg" aria-label="Zahnarztpraxis Werland Logo">
+  <g transform="translate(0, 446) scale(0.1, -0.1)">
+    <g class="anim-letter-m">
+      <path fill="#10140f" d="M1810 3315 c-83 -16 -129 -36 -157 -66 -22 -24 -72 -134 -133 -289
+-18 -47 -46 -113 -61 -146 -16 -34 -29 -67 -29 -73 0 -6 -4 -19 -9 -29 -44
+-85 -45 -90 -31 -107 13 -16 15 -15 32 5 10 12 18 29 18 36 0 8 4 22 9 32 17
+31 71 152 71 159 0 3 12 31 26 61 14 30 35 75 45 100 11 25 22 43 24 40 3 -2
+16 -106 30 -229 44 -386 90 -657 135 -784 41 -118 172 -448 183 -463 8 -11 13
+-10 25 2 13 13 9 32 -36 163 -61 177 -105 322 -127 418 -30 126 -48 259 -32
+234 1 -2 20 -57 41 -122 38 -116 105 -249 148 -294 20 -21 23 -22 37 -8 13 12
+13 19 4 33 -108 153 -209 494 -244 819 -15 148 -8 357 14 399 18 35 51 60 93
+70 42 10 57 24 43 40 -14 17 -33 16 -119 -1z"/>
+      <path fill="#10140f" d="M711 3227 c-8 -11 -6 -18 9 -32 16 -14 20 -31 20 -75 0 -61 16 -90
+38 -68 6 6 14 10 16 7 2 -2 26 -53 54 -114 42 -94 113 -248 261 -567 17 -38
+44 -97 60 -132 48 -104 60 -100 116 34 31 74 35 92 25 105 -10 12 -16 13 -27
+4 -8 -7 -17 -9 -23 -3 -5 5 -92 189 -194 409 -102 220 -190 407 -194 415 -17
+29 -140 42 -161 17z"/>
+      <path fill="#10140f" d="M1320 2475 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+      <path fill="#10140f" d="M671 2426 c-7 -8 -11 -23 -10 -33 1 -10 -1 -25 -4 -33 -3 -8 -11 -45
+-17 -82 -7 -40 -24 -86 -40 -112 -35 -55 -26 -66 50 -66 69 0 85 13 62 48 -12
+19 -16 48 -16 124 1 54 4 101 8 105 11 11 7 40 -8 52 -10 9 -16 8 -25 -3z"/>
+    </g>
+    <g class="anim-letter-w">
+      <path fill="#8a7247" d="M3985 3645 c-147 -23 -204 -47 -172 -73 10 -8 40 -6 113 9 141 30
+326 23 438 -15 105 -36 152 -65 218 -134 64 -67 98 -123 129 -212 67 -196 -8
+-548 -202 -942 -33 -65 -59 -121 -59 -123 0 -4 -83 -158 -130 -240 -12 -22
+-42 -74 -65 -115 -23 -41 -60 -106 -82 -145 -50 -89 -131 -241 -248 -470 -51
+-99 -114 -216 -140 -260 -35 -59 -45 -83 -38 -95 6 -8 14 -15 19 -14 14 1 105
+156 249 424 162 300 228 421 315 570 242 417 370 704 441 985 33 130 34 349 2
+450 -96 305 -404 461 -788 400z"/>
+      <path fill="#8a7247" d="M2855 3003 c-9 -21 -30 -80 -47 -130 -25 -76 -28 -96 -18 -108 17
+-20 36 -4 46 38 l6 31 14 -26 c7 -14 61 -165 118 -334 223 -655 201 -599 229
+-602 33 -4 48 20 77 125 19 66 21 85 11 97 -7 8 -18 13 -25 10 -13 -5 -52 100
+-235 641 l-98 290 -31 3 c-28 3 -33 -1 -47 -35z"/>
+      <path fill="#8a7247" d="M2053 3019 c-9 -9 -4 -21 21 -50 28 -33 61 -121 206 -552 95 -282
+181 -521 192 -532 30 -32 48 -9 86 104 27 82 32 105 22 116 -10 12 -16 12 -26
+4 -11 -9 -16 -5 -25 17 -35 93 -269 807 -269 822 0 10 6 27 14 38 26 35 3 44
+-108 44 -64 0 -106 -4 -113 -11z"/>
+      <path fill="#8a7247" d="M3492 3017 c-7 -8 -6 -18 4 -31 17 -23 18 -76 3 -129 -8 -29 -7 -42
+2 -53 17 -20 36 -1 50 50 15 54 42 107 68 130 16 15 18 22 10 33 -15 17 -123
+18 -137 0z"/>
+      <path fill="#8a7247" d="M3483 2778 c-14 -17 -73 -202 -73 -228 0 -10 -4 -22 -10 -25 -14 -9
+-12 -41 3 -54 17 -13 37 4 37 31 0 10 4 26 9 36 5 9 24 64 41 121 27 89 30
+106 17 118 -11 11 -16 12 -24 1z"/>
+      <path fill="#8a7247" d="M2750 2695 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+      <path fill="#8a7247" d="M2730 2635 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+      <path fill="#8a7247" d="M2703 2548 c-6 -7 -23 -50 -38 -96 -22 -68 -25 -85 -14 -98 19 -23
+32 -3 64 94 24 73 25 86 13 98 -12 12 -17 13 -25 2z"/>
+      <path fill="#8a7247" d="M3350 2365 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+      <path fill="#8a7247" d="M2630 2335 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+      <path fill="#8a7247" d="M3310 2235 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+      <path fill="#8a7247" d="M3290 2175 c-9 -11 -11 -22 -4 -32 13 -21 25 -21 38 -1 8 14 7 21 -5
+33 -14 15 -17 15 -29 0z"/>
+    </g>
+    <g class="anim-arc-dark">
+      <path fill="#10140f" d="M1929 3317 c6 -8 8 -16 6 -19 -3 -3 50 -7 117 -10 101 -4 134 -9 186
+-30 34 -14 62 -24 62 -21 0 11 -135 65 -196 78 -92 19 -191 20 -175 2z"/>
+      <path fill="#10140f" d="M659 3234 c18 -8 40 -13 49 -9 21 8 14 11 -38 18 l-45 6 34 -15z"/>
+      <path fill="#10140f" d="M735 2988 c-4 -40 -20 -176 -36 -301 -31 -243 -33 -264 -22 -254 3 4
+12 2 20 -4 10 -9 13 -8 13 2 0 21 58 528 66 579 4 25 3 42 -1 38 -5 -4 -14 -3
+-21 2 -9 8 -13 -6 -19 -62z"/>
+      <path fill="#10140f" d="M1348 2545 c-15 -36 -23 -63 -18 -60 5 3 11 1 15 -5 11 -17 23 -11
+33 18 6 15 17 44 27 65 9 22 12 36 6 33 -5 -4 -12 -2 -16 4 -12 19 -20 10 -47
+-55z"/>
+      <path fill="#10140f" d="M1292 2414 c-7 -14 -8 -23 -3 -19 5 3 12 1 16 -5 10 -17 21 -12 33
+16 7 14 8 23 3 19 -5 -3 -12 -1 -16 5 -10 17 -21 12 -33 -16z"/>
+      <path fill="#10140f" d="M540 2110 c-11 -7 -7 -10 18 -10 20 0 31 4 27 10 -8 13 -26 13 -45 0z"/>
+      <path fill="#10140f" d="M715 2110 c-4 -6 9 -10 32 -9 30 0 34 2 18 9 -27 12 -43 12 -50 0z"/>
+      <path fill="#10140f" d="M2019 1954 c-28 -34 119 -135 195 -134 14 0 6 7 -22 20 -24 11 -69
+44 -101 75 -53 50 -60 54 -72 39z"/>
+      <path fill="#10140f" d="M1985 1560 c-4 -6 -11 -8 -16 -5 -5 3 1 -16 12 -42 11 -26 45 -109
+76 -183 170 -415 222 -513 287 -544 45 -21 60 -20 88 7 13 12 17 17 8 10 -8
+-6 -27 -14 -42 -18 -38 -10 -97 47 -146 143 -35 67 -149 360 -223 575 -24 66
+-32 77 -44 57z"/>
+    </g>
+    <g class="anim-arc-gold">
+      <path fill="#8a7247" d="M3739 3577 c-135 -56 -259 -135 -364 -232 -60 -55 -48 -50 54 23 104
+74 222 132 380 187 10 4 10 9 2 19 -6 7 -8 16 -4 19 12 13 -12 7 -68 -16z"/>
+      <path fill="#8a7247" d="M2293 3235 c0 -8 4 -12 9 -9 5 3 6 10 3 15 -9 13 -12 11 -12 -6z"/>
+      <path fill="#8a7247" d="M1991 3026 c2 -2 14 -8 25 -14 17 -9 25 -8 34 3 11 13 7 15 -25 15
+-21 0 -36 -2 -34 -4z"/>
+      <path fill="#8a7247" d="M2277 3019 c8 -8 19 -8 40 -1 28 10 28 10 -11 11 -29 1 -37 -2 -29
+-10z"/>
+      <path fill="#8a7247" d="M3424 3021 c10 -15 55 -19 67 -5 9 11 4 14 -30 14 -23 0 -40 -4 -37
+-9z"/>
+      <path fill="#8a7247" d="M3630 3015 c9 -11 17 -12 31 -4 27 14 24 19 -12 19 -27 0 -30 -2 -19
+-15z"/>
+      <path fill="#8a7247" d="M3487 2803 c-10 -10 -8 -25 2 -18 5 3 12 1 16 -5 8 -12 25 -4 25 12
+0 6 -3 8 -7 5 -3 -4 -11 -2 -18 3 -7 5 -15 7 -18 3z"/>
+      <path fill="#8a7247" d="M2763 2735 c-6 -19 -7 -33 -3 -30 5 3 11 1 15 -5 11 -18 21 -10 32
+25 6 19 7 33 3 30 -5 -3 -11 -1 -15 5 -11 18 -21 10 -32 -25z"/>
+      <path fill="#8a7247" d="M2734 2649 c-4 -7 -3 -9 4 -5 6 3 13 2 17 -4 8 -14 25 -13 25 2 0 6
+-3 8 -7 5 -3 -4 -12 -2 -19 4 -8 7 -14 6 -20 -2z"/>
+      <path fill="#8a7247" d="M2714 2584 c-4 -11 -9 -23 -12 -29 -3 -5 -2 -7 3 -3 4 4 14 3 22 -4
+7 -6 15 -9 17 -7 8 9 18 54 11 47 -5 -4 -14 -3 -21 3 -11 9 -15 7 -20 -7z"/>
+      <path fill="#8a7247" d="M3371 2439 c-7 -23 -15 -48 -18 -58 -4 -9 -3 -13 2 -9 4 4 14 3 21
+-3 10 -8 15 -8 19 2 25 71 33 99 25 94 -5 -3 -11 -1 -15 5 -12 19 -22 10 -34
+-31z"/>
+      <path fill="#8a7247" d="M2634 2349 c-4 -7 -3 -9 4 -5 6 3 13 2 17 -4 8 -14 25 -13 25 2 0 6
+-3 8 -7 5 -3 -4 -12 -2 -19 4 -8 7 -14 6 -20 -2z"/>
+      <path fill="#8a7247" d="M3332 2309 c-18 -46 -24 -74 -17 -67 5 4 14 3 21 -3 11 -9 16 -6 22
+12 18 46 24 74 17 67 -5 -4 -14 -3 -21 3 -11 9 -16 6 -22 -12z"/>
+      <path fill="#8a7247" d="M2583 2204 c-18 -53 -29 -94 -26 -90 3 3 12 1 20 -6 7 -6 15 -9 17
+-7 9 11 63 189 56 184 -5 -3 -11 -1 -15 5 -13 21 -22 7 -52 -86z"/>
+      <path fill="#8a7247" d="M3294 2189 c-4 -7 -3 -9 4 -5 6 3 13 2 17 -4 8 -14 25 -13 25 2 0 6
+-3 8 -7 5 -3 -4 -12 -2 -19 4 -8 7 -14 6 -20 -2z"/>
+      <path fill="#8a7247" d="M3275 2130 c-4 -6 1 -20 11 -31 17 -19 19 -19 25 -2 10 23 11 38 2
+30 -3 -4 -12 -2 -19 4 -8 7 -14 7 -19 -1z"/>
+      <path fill="#8a7247" d="M2760 1651 c-98 -54 -127 -123 -210 -509 -17 -79 -42 -175 -54 -213
+-13 -38 -19 -72 -15 -74 15 -10 70 185 108 381 23 122 71 269 105 323 37 59
+80 84 148 89 52 4 67 0 124 -29 76 -38 132 -102 193 -219 37 -72 106 -268 135
+-387 72 -290 139 -403 237 -403 41 0 108 41 157 96 67 75 80 100 61 119 -13
+13 -20 7 -61 -50 -87 -119 -170 -156 -225 -97 -51 55 -73 113 -154 407 -37
+137 -102 300 -151 382 -43 72 -117 146 -176 175 -65 31 -173 36 -222 9z"/>
+    </g>
+  </g>
+</svg>
+    </div>
+    <div class="logo-caption">Zahnarztpraxis Werland</div>
+  </div>
+
+  <!-- RECHTE SPALTE: Text + Eintreten -->
+  <div class="col-right">
+
+    <div>
+      <div class="intro-label">Willkommen</div>
+      <h1 class="intro-headline">Bitte <em>lächeln.</em></h1>
+      <div class="intro-text">
+        <p>Schöne Zähne symbolisieren Gesundheit, Vitalität und Lebensfreude. Seit über zwei Jahrzehnten begleite ich meine Patientinnen und Patienten mit moderner Zahnheilkunde — schonend, transparent und persönlich.</p>
+        <p>Ich freue mich auf Sie.</p>
+      </div>
+    </div>
+
+    <div class="contact-block">
+      <div class="contact-label">Kontakt</div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="small">Termine</div>
+          <div class="big"><a href="tel:027742666">02774 · 2666</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="small">Praxis</div>
+          <div class="big">Bahnhofstraße 2<br>35716 Dietzhölztal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="enter">
+      <button class="enter-btn" id="enterBtn" type="button" aria-label="Website betreten">
+        Eintreten
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="bottom">
+    <span>© 2026 · Markus Werland</span>
+    <div class="right-side">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tür-Animation -->
+<div class="beyond">
+  <div class="overline">Willkommen</div>
+  <h2>Bitte <em>lächeln</em>.</h2>
+</div>
+
+<div class="door left">
+  <div class="door-label">Werland<em>.</em></div>
+  <div class="door-sub">Seit 2002</div>
+</div>
+
+<div class="door right">
+  <div class="door-label">Praxis</div>
+  <div class="door-sub">Dietzhölztal</div>
 </div>
 
 <script>
-(function() {
-  var btn = document.getElementById('navBurger');
-  var body = document.body;
-  var menu = document.getElementById('mobileMenu');
-  if (!btn || !menu) return;
-
-  function toggle() {
-    var open = body.classList.toggle('menu-open');
-    btn.setAttribute('aria-expanded', open);
-    menu.setAttribute('aria-hidden', !open);
-  }
-  function close() {
-    body.classList.remove('menu-open');
-    btn.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-hidden', 'true');
-  }
-
-  btn.addEventListener('click', toggle);
-
-  // Close when a menu link is tapped
-  menu.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', close);
+  document.getElementById('enterBtn').addEventListener('click', function() {
+    document.body.classList.add('doors-closing');
+    setTimeout(function() {
+      document.body.classList.remove('doors-closing');
+      document.body.classList.add('doors-opening');
+    }, 800);
+    setTimeout(function() {
+      window.location.href = 'home.html';
+    }, 3600);
   });
 
-  // Close on ESC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') close();
+  // Mit Klick irgendwo auf das Logo auch eintreten
+  document.querySelector('.col-left').addEventListener('click', function() {
+    document.getElementById('enterBtn').click();
   });
-
-  // Close when viewport grows (user rotates to landscape etc.)
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 900) close();
-  });
-})();
 </script>
-
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-eyebrow">Zahnarztpraxis · Ewersbach</div>
-  <h1 class="display hero-title">Zahn&shy;medizin, die <em>Vertrauen</em> verdient.</h1>
-  <div class="hero-meta">
-    <div>
-      <div class="meta-label">Seit 1998</div>
-      <p>Über zwei Jahrzehnte erfahrene Zahnheilkunde in Dietzhölztal — ruhig, präzise und ohne Kompromisse bei der Qualität.</p>
-    </div>
-    <div>
-      <div class="meta-label">Unser Versprechen</div>
-      <p>Wir nehmen uns Zeit. Wir erklären verständlich. Und wir behandeln so, als wären Sie selbst in der Familie.</p>
-    </div>
-  </div>
-</header>
-
-<!-- PRAXIS -->
-<section id="praxis">
-  <div class="section-head">
-    <div class="section-number">I · Die Praxis</div>
-    <h2 class="display section-title">Eine Praxis, die <em>zuhört</em> — und dann handelt.</h2>
-  </div>
-  <div class="about-grid">
-    <div class="about-portrait">
-      <img src="assets/logo.png" alt="Zahnarztpraxis Werland">
-    </div>
-    <div class="prose">
-      <p class="lead">Schöne Zähne stehen für <em>Gesundheit, Vitalität und Lebensfreude</em> — und genau dafür arbeiten wir jeden Tag.</p>
-      <p>Als Zahnarzt Markus Werland führe ich seit vielen Jahren eine Praxis, in der moderne Zahnmedizin auf echte Zuwendung trifft. Bei uns wird niemand durch die Behandlung geschleust. Jeder Termin beginnt mit einem Gespräch, jede Entscheidung wird gemeinsam getroffen.</p>
-      <p>Fortbildung, strenge Hygienestandards und ein respektvolles Miteinander bilden die Grundlage unserer Arbeit. Für Angstpatientinnen und -patienten bieten wir zusätzlich eine sanfte Lachgassedierung an.</p>
-      <a href="zahnarzt.html" class="back-link" style="margin-top: 48px; transform: none;">Mehr über die Praxis</a>
-    </div>
-  </div>
-</section>
-
-<!-- LEISTUNGEN -->
-<section id="leistungen" class="services">
-  <div class="services-inner">
-    <div class="section-head">
-      <div class="section-number">II · Leistungen</div>
-      <h2 class="display section-title">Das gesamte Spektrum <em>moderner</em> Zahnheilkunde.</h2>
-    </div>
-    <div class="services-list">
-      <a href="leistungen/implantologie.html" class="service-row">
-        <span class="service-num">i.</span>
-        <h3 class="service-name">Implantologie</h3>
-        <p class="service-desc">Fester Biss, natürlicher Sitz. Wir setzen Implantate mit langjähriger Expertise und modernster Technik — als dauerhafter Ersatz verlorener Zähne.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/zahnkosmetik.html" class="service-row">
-        <span class="service-num">ii.</span>
-        <h3 class="service-name">Zahnkosmetik</h3>
-        <p class="service-desc">Bleaching, Veneers und unsichtbare Füllungen — für ein Lächeln, das selbstbewusst macht. Substanzschonend, ästhetisch, präzise.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/prophylaxe.html" class="service-row">
-        <span class="service-num">iii.</span>
-        <h3 class="service-name">Prophylaxe</h3>
-        <p class="service-desc">Die wirksamste Behandlung ist die, die gar nicht nötig wird. Professionelle Zahnreinigung und individuell abgestimmte Vorsorge.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/parodontologie.html" class="service-row">
-        <span class="service-num">iv.</span>
-        <h3 class="service-name">Parodontologie</h3>
-        <p class="service-desc">Schmerzarme Behandlung von Zahnfleischerkrankungen — mit dem klaren Ziel, Ihre Zähne langfristig zu erhalten.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/wurzelbehandlung.html" class="service-row">
-        <span class="service-num">v.</span>
-        <h3 class="service-name">Wurzelbehandlung</h3>
-        <p class="service-desc">Moderne Endodontie rettet Zähne, die früher verloren gewesen wären. Präzise Diagnostik, mikroskopgestütztes Arbeiten.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/lachgassedierung.html" class="service-row">
-        <span class="service-num">vi.</span>
-        <h3 class="service-name">Lachgassedierung</h3>
-        <p class="service-desc">Entspannt behandeln lassen — auch bei Zahnarztangst. Sicher, nebenwirkungsfrei und sofort wieder verkehrstauglich.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/komposite.html" class="service-row">
-        <span class="service-num">vii.</span>
-        <h3 class="service-name">Komposite</h3>
-        <p class="service-desc">Zahnfarbene Füllungen, die man nicht mehr sieht. Metallfrei, langlebig und ästhetisch.</p>
-        <span class="service-arrow">→</span>
-      </a>
-      <a href="leistungen/zaehne-und-gesundheit.html" class="service-row">
-        <span class="service-num">viii.</span>
-        <h3 class="service-name">Zähne &amp; Gesundheit</h3>
-        <p class="service-desc">Der Mund als Spiegel des Körpers. Warum Zahngesundheit weit mehr ist als kosmetische Pflege.</p>
-        <span class="service-arrow">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- SPRECHZEITEN -->
-<section id="sprechzeiten">
-  <div class="section-head">
-    <div class="section-number">III · Sprechzeiten</div>
-    <h2 class="display section-title">Wann wir für <em>Sie</em> da sind.</h2>
-  </div>
-  <div class="hours-grid">
-    <div class="hours-table">
-      <div class="hours-row"><span class="hours-day">Montag</span><span class="hours-time">10:00 – 13:00 &nbsp;·&nbsp; 15:00 – 17:30</span></div>
-      <div class="hours-row"><span class="hours-day">Dienstag</span><span class="hours-time">10:00 – 13:00 &nbsp;·&nbsp; 15:00 – 17:30</span></div>
-      <div class="hours-row"><span class="hours-day">Mittwoch</span><span class="hours-time">10:00 – 13:00 &nbsp;·&nbsp; 15:00 – 17:30</span></div>
-      <div class="hours-row"><span class="hours-day">Donnerstag</span><span class="hours-time">10:00 – 13:00 &nbsp;·&nbsp; 15:00 – 17:30</span></div>
-      <div class="hours-row"><span class="hours-day">Freitag</span><span class="hours-time"><em>nach Vereinbarung</em></span></div>
-      <div class="hours-row"><span class="hours-day">Samstag</span><span class="hours-time"><em>nach Vereinbarung</em></span></div>
-    </div>
-    <div class="hours-side">
-      <h3>Termin <em>direkt</em> vereinbaren.</h3>
-      <p>Rufen Sie uns an — wir nehmen uns Zeit für Ihr Anliegen und finden den passenden Termin. Auch kurzfristig bei Schmerzen.</p>
-      <a href="tel:027742666" class="phone-link">
-        <span class="phone-label">Rezeption</span>
-        02774 · 2666
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer id="kontakt" class="footer">
-  <div class="footer-inner">
-    <p class="display footer-cta">
-      Bereit, wenn <em>Sie</em> es sind — <a href="tel:027742666">Rufen Sie an.</a>
-    </p>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Adresse</h4>
-        <p>Zahnarztpraxis Markus Werland<br>Bahnhofstraße 2<br>35716 Dietzhölztal</p>
-      </div>
-      <div class="footer-col">
-        <h4>Kontakt</h4>
-        <a href="tel:027742666">02774 · 2666</a>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <a href="zahnarzt.html">Praxis</a>
-        <a href="leistungen.html">Leistungen</a>
-        <a href="sprechzeiten.html">Sprechzeiten</a>
-        <a href="anfahrt.html">Anfahrt</a>
-      </div>
-      <div class="footer-col">
-        <h4>Rechtliches</h4>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Zahnarztpraxis Markus Werland</div>
-      <div>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
